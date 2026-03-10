@@ -1,0 +1,104 @@
+/* ============================================================
+   GLOBAL — Yuna Noh Portfolio
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* ── Palette (from style guide) ── */
+  --pink-light:  #FFF0F0;
+  --pink-pale:   #FFE4F2;
+  --pink-mid:    #FF9AD2;
+  --white:       #FEFEFE;
+  --dark:        #2E0021;
+  --green-light: #F3FFD9;
+  --green-mid:   #D7FF80;
+  --green-dark:  #557D00;
+  --purple:      #9B7EC8;
+  --lilac:       #C8ABFF;
+  --teal:        #7ECEC4;
+  --coral:       #FF7A7A;
+  --yellow:      #FFE566;
+
+  /* ── Typography ── */
+  --font-display: 'am-udine', 'Arial Black', Impact, sans-serif;
+  --font-hand:    'Gloria Hallelujah', cursive;
+  --font-body:    'Glory', 'Helvetica Neue', Arial, sans-serif;
+
+  /* ── Layout ── */
+  --nav-h: 56px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--dark);
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+a, button, [role="button"] {
+  cursor: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--pink-light); }
+::-webkit-scrollbar-thumb { background: var(--pink-mid); border-radius: 3px; }
+
+/* Grid background utility */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(46,0,33,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,0,33,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-color: var(--white);
+}
+
+/* ── Keyframes (shared across pages) ── */
+@keyframes blobMorph {
+  0%   { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+  25%  { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
+  50%  { border-radius: 50% 50% 50% 50%; }
+  75%  { border-radius: 70% 30% 50% 50% / 30% 70% 50% 50%; }
+  100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+}
+@keyframes sparkleSpin {
+  from { transform: translate(-50%,-50%) rotate(0deg) scale(1); }
+  50%  { transform: translate(-50%,-50%) rotate(180deg) scale(1.3); }
+  to   { transform: translate(-50%,-50%) rotate(360deg) scale(1); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-10px); }
+}
+@keyframes sparkle {
+  0%,100% { transform: scale(1) rotate(0deg); }
+  50%     { transform: scale(1.3) rotate(20deg); }
+}
+@keyframes nudge {
+  0%,100% { opacity: 0.4; transform: translateY(0); }
+  50%     { opacity: 0.75; transform: translateY(-5px); }
+}
+@keyframes starspin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

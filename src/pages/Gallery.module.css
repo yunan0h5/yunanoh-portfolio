@@ -1,0 +1,158 @@
+.page {
+  padding-top: var(--nav-h);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--white);
+  position: relative;
+}
+
+.welcome {
+  position: absolute;
+  top: calc(var(--nav-h) + 24px);
+  left: 60px;
+  font-family: var(--font-hand);
+  font-size: 15px;
+  color: rgba(46, 0, 33, 0.32);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hint {
+  position: absolute;
+  bottom: 56px;
+  right: 80px;
+  font-family: var(--font-hand);
+  font-size: 14px;
+  color: rgba(46, 0, 33, 0.28);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ── HEADLINE ── */
+.headline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.headlineText {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 84px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--dark);
+  font-weight: 400;
+  text-align: left;
+}
+
+/* ── FOLDER FIELD ── */
+.folderField {
+  position: absolute;
+  inset: 0;
+  top: var(--nav-h);
+}
+
+/* ── SINGLE FOLDER ── */
+.folder {
+  position: absolute;
+  cursor: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  animation: folderBreath var(--dur, 4s) ease-in-out infinite var(--delay, 0s);
+  z-index: 2;
+}
+
+.folder:hover { 
+  z-index: 20; 
+}
+
+/* ── 폴더 이미지 ── */
+.folderImgWrap {
+  width: 120px;
+  height: 88px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.folderImg {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
+  margin-top: -10px;
+}
+
+/* ── 호버 말풍선 ── */
+.folderHint {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--dark);
+  color: white;
+  font-family: var(--font-hand);
+  font-size: 9px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 30;
+}
+
+.folderHint::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--dark);
+  border-bottom: none;
+}
+
+.folderHintVisible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0px);
+}
+
+/* ── 폴더 제목 ── */
+.folderTitle {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(46, 0, 33, 0.55);
+  letter-spacing: 0.04em;
+  text-align: center;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+/* ── 애니메이션 ── */
+.folderPop {
+  animation: folderPop 0.3s ease both !important;
+}
+
+@keyframes folderPop {
+  0%   { transform: rotate(var(--base-rot, 0deg)) scale(1); }
+  40%  { transform: rotate(var(--base-rot, 0deg)) scale(0.88); }
+  100% { transform: rotate(var(--base-rot, 0deg)) scale(1); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .welcome { left: 24px; font-size: 12px; }
+  .hint { right: 24px; font-size: 12px; }
+  .headlineText { font-size: 36px; }
+  .folderImgWrap { width: 80px; height: 70px; }
+  .folderImg { width: 80px; height: 70px; }
+}

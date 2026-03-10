@@ -1,0 +1,450 @@
+.page { padding-top: var(--nav-h); }
+
+/* ── HERO ── */
+.hero {
+  min-height: calc(100vh - var(--nav-h));
+  display: flex; 
+  position: relative;
+}
+
+.leftPanel {
+  position: absolute; 
+  top: 0; 
+  left: 0;
+  width: 150px; 
+  height: 100%;
+  display: flex; 
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 56px 0 48px 32px; 
+  z-index: 50;
+}
+
+.catList { 
+  list-style: none; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 2px; 
+}
+
+.catItem {
+  font-size: 14px; font-weight: 400;
+  color: rgba(46,0,33,0.38);
+  padding: 7px 12px 7px 14px; cursor: none;
+  transition: color 0.2s, transform 0.2s;
+  width: fit-content; position: relative;
+  letter-spacing: 0.02em; border-radius: 8px;
+}
+.catItem::before {
+  content: ''; 
+  position: absolute; 
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%) scaleX(0); 
+  transform-origin: left;
+  width: 3px; 
+  height: 18px; 
+  background: var(--pink-mid);
+  border-radius: 2px; 
+  transition: transform 0.2s ease;
+}
+.catItem:hover { color: var(--dark); transform: translateX(4px); }
+.catActive { color: var(--dark) !important; transform: translateX(8px) !important; }
+.catActive::before { transform: translateY(-50%) scaleX(1) !important; }
+
+.heroMain {
+  flex: 1; margin-left: 150px;
+  display: flex; align-items: center; justify-content: flex-end;
+  padding: 0 80px 0 40px; position: relative;
+  min-height: calc(100vh - var(--nav-h));
+}
+
+.cursorHint {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  transform: translateX(-50%);
+  font-family: var(--font-hand);
+  font-size: 13px;
+  color: rgba(46,0,33,0.4);
+  white-space: nowrap;
+  animation: nudge 2.2s ease-in-out infinite;
+}
+
+.bubble {
+  position: absolute; display: flex;
+  align-items: center; justify-content: center;
+  border-radius: 100px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  pointer-events: all;
+  animation: float 4s ease-in-out infinite;
+  font-family: var(--font-body); font-size: 12px; font-weight: 800;
+  text-decoration: none; letter-spacing: 0.02em;
+  white-space: nowrap; z-index: 20;
+  transition: box-shadow 0.2s ease;
+}
+
+.bubble:hover { 
+  box-shadow: 0 8px 28px rgba(0,0,0,0.18); 
+}
+
+.bubbleA { 
+  padding: 10px 20px; 
+  background: var(--pink-mid); 
+  color: white; 
+  top: 28%; 
+  right: 10%; 
+}
+
+.bubbleB { 
+  padding: 10px 20px; 
+  background: var(--green-mid); 
+  color: var(--green-dark); 
+  top: 38%; 
+  right: 8%; 
+  animation-delay: 0.9s; 
+}
+
+.heroType {
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start;
+  position: relative; 
+  z-index: 10; 
+  user-select: none;
+  animation: fadeUp 0.8s ease both;
+}
+
+.designerLine {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 60px);
+  line-height: 0.9; 
+  letter-spacing: -0.02em;
+  color: var(--dark); 
+  position: relative; 
+  display: inline-block;
+}
+
+.designerLine::before {
+  content: ''; 
+  position: absolute;
+  top: 0; left: -10px; 
+  right: -10px; 
+  bottom: 0;
+  background: var(--pink-light); 
+  z-index: -1; 
+  border-radius: 6px;
+}
+
+.nameLine {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 9.5vw, 130px);
+  line-height: 0.9; 
+  letter-spacing: -0.02em;
+  color: var(--dark); 
+  margin-top: 8px;
+}
+
+.heroSub {
+  margin-top: 22px; 
+  display: flex; 
+  align-items: flex-start; 
+  gap: 8px; 
+}
+
+.heroSub p {
+  font-family: var(--font-hand); 
+  font-size: 12px;
+  color: rgba(46,0,33,0.45); 
+  line-height: 1.6; 
+  max-width: 200px;
+}
+
+.scrollHint {
+  position: absolute; 
+  bottom: 32px; 
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-hand); 
+  font-size: 11px;
+  color: rgba(46,0,33,0.3);
+  animation: nudge 2.2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  33%      { transform: translateY(-10px) rotate(4deg); }
+  66%      { transform: translateY(-5px) rotate(-2deg); }
+}
+@keyframes nudge {
+  0%,100% { opacity: 0.4; transform: translateY(0); }
+  50%      { opacity: 0.75; transform: translateY(-5px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 그라디언트 배경 ── */
+.gradientBg {
+  background: linear-gradient(180deg, #ffffff 0%, var(--pink-pale) 40%, var(--pink-mid) 100%);
+  padding-bottom: 10px;
+}
+
+/* ── KEY PROJECTS ── */
+.projectsSection { padding: 80px 60px 100px; }
+
+.sectionTitle {
+  font-family: var(--font-display); font-size: 40px;
+  letter-spacing: 0.05em; color: var(--dark); margin-bottom: 8px;
+}
+.sectionSub {
+  font-family: var(--font-hand); font-size: 13px;
+  color: rgba(46,0,33,0.5); margin-bottom: 48px;
+}
+
+.cardRow {
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px 0 20px;
+}
+
+.card {
+  width: 360px; flex-shrink: 0; border-radius: 5px;
+  overflow: hidden; background: white;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  cursor: none; position: relative;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+}
+.card:hover {
+  transform: rotate(0deg) translateY(-20px) scale(1.03) !important;
+  box-shadow: 0 24px 56px rgba(0,0,0,0.2); z-index: 10 !important;
+}
+
+.cardTop {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 16px 18px 12px; background: white; position: relative; z-index: 2;
+}
+.cardTitle { font-size: 13px; font-weight: 800; color: var(--dark); line-height: 1.3; margin-bottom: 3px; max-width: 260px; }
+.cardSub { font-size: 11px; color: rgba(46,0,33,0.45); }
+.cardArrow { font-size: 11px; font-weight: 800; color: rgba(46,0,33,0.35); flex-shrink: 0; margin-top: 2px; }
+
+.cardImg { width: 100%; height: 340px; overflow: hidden; background: var(--pink-light); }
+.cardImg img { width: 100%; height: 100%; object-fit: cover; }
+
+.cardOverlay {
+  position: absolute; inset: 0;
+  background: rgba(80,40,100,0.5);
+  backdrop-filter: blur(8px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px; opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 24px; text-align: center;
+}
+.card:hover .cardOverlay { opacity: 1; }
+.overlayTitle { font-size: 15px; font-weight: 800; color: white; line-height: 1.4; }
+.overlaySub { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 600; }
+
+.exploreMore {
+  display: block; text-align: center;
+  font-family: var(--font-hand); font-size: 14px;
+  color: rgba(46,0,33,0.5); cursor: none;
+  margin-top: 16px; transition: color 0.2s;
+}
+.exploreMore:hover { color: var(--dark); }
+
+/* ── ABOUT BANNER ── */
+.aboutBanner {
+  padding: 80px 80px 80px 10%;
+  display: flex; align-items: center; gap: 72px;
+  position: relative;
+  overflow: hidden;
+  /* 위아래 갭 없애기 */
+  margin: 0;
+}
+
+.bgShapes {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+
+.bannerSparkle {
+  position: absolute; top: 36px; right: 56px;
+  font-size: 44px; color: rgba(255,255,255,0.55);
+  pointer-events: none;
+  animation: sparkle 3s ease-in-out infinite; z-index: 1;
+}
+.deco1 {
+  position: absolute; bottom: 60px; left: 380px;
+  font-size: 14px; color: rgba(255,255,255,0.5);
+  animation: floatDeco 4s ease-in-out infinite;
+  pointer-events: none; z-index: 1;
+}
+.deco2 {
+  position: absolute; top: 80px; right: 200px;
+  font-size: 12px; color: rgba(215,255,128,0.6);
+  animation: floatDeco 5s ease-in-out infinite reverse;
+  pointer-events: none; z-index: 1;
+}
+
+@keyframes floatDeco {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(20deg); }
+}
+@keyframes sparkle {
+  0%,100% { transform: scale(1) rotate(0deg); }
+  50%      { transform: scale(1.25) rotate(20deg); }
+}
+
+/* ── 사진 프레임 — 이미지가 밖으로 삐져나옴 ── */
+.photoWrap {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 2;
+  width: 240px;
+  /* 이미지가 위로 삐져나올 공간 */
+  margin-top: 40px;
+  margin-bottom: -40px;
+}
+
+/* 뒤 장식 카드 */
+.photoCardBack {
+  position: absolute;
+  top: 12px; left: 12px;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.3);
+  border-radius: 24px;
+  transform: rotate(4deg);
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+/* 프레임 — overflow: visible 로 삐져나오게 */
+.photoFrame {
+  position: relative;
+  width: 240px;
+  height: 300px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 16px 48px rgba(46,0,33,0.2);
+  transform: rotate(-3deg);
+  /* overflow visible — 이미지 삐져나옴 */
+  overflow: visible;
+  transition: transform 0.3s ease;
+}
+.photoFrame:hover { transform: rotate(0deg); }
+
+/* 이미지가 프레임보다 크게 — 위로 삐져나옴 */
+.photoImg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 360px; /* 프레임(300px)보다 크게 → 위로 삐져나옴 */
+  object-fit: cover;
+  object-position: top;
+  border-radius: 20px;
+  filter: drop-shadow(0 -8px 20px rgba(46,0,33,0.1));
+}
+
+/* ── 오른쪽 텍스트 ── */
+.bannerContent { flex: 1; position: relative; z-index: 2; }
+
+.bannerName {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.5vw, 76px);
+  color: white; 
+  letter-spacing: 0.02em; 
+  line-height: 1;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 24px rgba(46,0,33,0.15);
+}
+
+.bannerDesc {
+  font-size: 16px; 
+  line-height: 1.7;
+  color: rgba(46,0,33,0.5);
+  max-width: 460px; 
+  margin-bottom: 20px;
+}
+
+.bannerDesc strong {
+  color: rgba(46,0,33,0.5); 
+  font-weight: 800; 
+}
+
+.bannerContact { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  margin-bottom: 28px; 
+}
+
+.contactItem {
+  font-size: 13px; 
+  color: rgba(46,0,33,0.5);
+  text-decoration: none; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  transition: color 0.2s; 
+  font-family: var(--font-body);
+}
+
+.contactItem:hover { 
+  color: black;
+}
+
+.bannerTags { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+  margin-bottom: 32px; 
+  align-items: center; 
+}
+
+.bannerTag {
+  padding: 7px 16px; 
+  border-radius: 100px;
+  font-family: var(--font-body); 
+  font-size: 12px; 
+  font-weight: 800;
+  letter-spacing: 0.02em; 
+  white-space: nowrap; 
+  display: inline-block;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease;
+}
+
+.bannerTag:hover { 
+  transform: rotate(0deg) scale(1.08) !important; 
+}
+
+.bannerMore {
+  font-family: var(--font-hand); 
+  font-size: 13px;
+  color: rgba(46,0,33,0.5); 
+  cursor: none;
+  transition: color 0.2s; 
+  display: inline-block;
+}
+
+.bannerMore:hover { color: black; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .leftPanel { display: none; }
+  .heroMain { margin-left: 0; padding: 0 24px; justify-content: center; }
+  .heroType { align-items: center; text-align: center; }
+  .designerLine::before { display: none; }
+  .scrollHint { display: none; }
+  .projectsSection { padding: 40px 24px; }
+  .cardRow { flex-direction: column; align-items: center; }
+  .card { width: 100%; margin-bottom: 16px; }
+  .aboutBanner { flex-direction: column; padding: 48px 24px 60px; align-items: center; text-align: center; }
+  .photoWrap { width: 200px; margin-top: 20px; margin-bottom: -20px; }
+  .photoFrame { width: 200px; height: 260px; }
+  .photoImg { width: 180px; height: 310px; }
+  .bannerTags { justify-content: center; }
+}
